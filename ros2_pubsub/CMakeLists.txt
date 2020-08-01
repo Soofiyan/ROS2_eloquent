@@ -23,8 +23,16 @@ find_package(rclcpp REQUIRED)
 add_executable(talker src/talker.cpp)
 ament_target_dependencies(talker rclcpp std_msgs)
 
+add_executable(listener src/listener.cpp)
+ament_target_dependencies(listener rclcpp std_msgs)
+
+add_executable(talker1 src/talker1.cpp)
+ament_target_dependencies(talker1 rclcpp std_msgs)
+
 install(TARGETS
   talker
+  talker1
+  listener
   DESTINATION lib/ros2_pubsub)
 
 if(BUILD_TESTING)

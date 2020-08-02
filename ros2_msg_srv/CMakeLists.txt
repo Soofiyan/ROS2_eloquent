@@ -31,18 +31,29 @@ ament_target_dependencies(talker_msg rclcpp std_msgs)
 add_executable(listener_msg src/listener_msg.cpp)
 ament_target_dependencies(listener_msg rclcpp std_msgs)
 
+add_executable(talker_srv src/talker_srv.cpp)
+ament_target_dependencies(talker_srv rclcpp std_msgs)
+
+add_executable(listener_srv src/listener_srv.cpp)
+ament_target_dependencies(listener_srv rclcpp std_msgs)
+
 rosidl_generate_interfaces(ros2_msg_srv
   "msg/Num.msg"
   "srv/Addthreeint.srv"
   DEPENDENCIES std_msgs
  )
 
- rosidl_target_interfaces(talker_msg ros2_msg_srv "rosidl_typesupport_cpp")
- rosidl_target_interfaces(listener_msg ros2_msg_srv "rosidl_typesupport_cpp")
+rosidl_target_interfaces(talker_msg ros2_msg_srv "rosidl_typesupport_cpp")
+rosidl_target_interfaces(listener_msg ros2_msg_srv "rosidl_typesupport_cpp")
+
+rosidl_target_interfaces(talker_srv ros2_msg_srv "rosidl_typesupport_cpp")
+rosidl_target_interfaces(listener_srv ros2_msg_srv "rosidl_typesupport_cpp")
 
  install(TARGETS
   talker_msg
   listener_msg
+  talker_srv
+  listener_srv
   DESTINATION lib/ros2_msg_srv)
 
 

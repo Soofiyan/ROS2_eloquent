@@ -56,6 +56,10 @@ rosidl_target_interfaces(listener_srv ros2_msg_srv "rosidl_typesupport_cpp")
   listener_srv
   DESTINATION lib/ros2_msg_srv)
 
+  install(DIRECTORY
+    launch
+    DESTINATION share/ros2_msg_srv/
+  )
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
